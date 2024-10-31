@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        .slide-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2em;
+            text-align: center;
+            padding: 0 20px; /* Padding untuk memberi ruang di sisi layar */
+        }
+        .slide {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+        }
+        /* Spesifik untuk slide 7 dan 9 */
+        .slide7 {
+            background-size: 80%; /* Mengurangi ukuran background */
+        }
+        .slide9 {
+            background-size: 80%; /* Mengurangi ukuran background */
+        }
+        .active {
+            display: flex;
+        }
+        .text {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 80%; /* Membatasi lebar teks agar tetap fokus di tengah */
+            line-height: 1.5;
+            animation: fade-in 2s ease-in-out forwards;
+            opacity: 0;
+        }
+        @keyframes fade-in {
+            to { opacity: 1; }
+        }
+        /* Tombol Next Berbentuk Love */
+        .next-btn {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 192, 203, 0.9);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5em;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .next-btn:hover {
+            background-color: rgba(255, 105, 180, 1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="slide-container">
+    <!-- Slide 1 -->
+    <div class="slide active" style="background-image: url('img/IMG-20230426-WA0029.jpg');">
+        <h1 class="text">Selamat ulang tahun sayangkuuu 💖</h1>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide" style="background-image: url('img/IMG-20231029-WA0001.jpg');">
+        <p class="text">Selamat ulang tahun, Ghaisani Zahrina Putri! 🎂✨<br>Di hari spesialmu ini, Aa cuma mau bilang kalau kamu adalah sosok yang luar biasa.</p>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide" style="background-image: url('img/IMG-20231113-WA0074.jpg');">
+        <p class="text">Semoga di umur baru ini, kamu makin kuat dan berani untuk menghadapi semuanya.<br>Jalani setiap prosesnya, nikmati setiap detiknya.</p>
+    </div>
+
+    <!-- Slide 4 (Kenangan) -->
+    <div class="slide" style="background-image: url('img/IMG-20240623-WA0084.jpg');">
+        <div class="text">Masih ingat nggak? Saat pertama kali ketemu, Aa nggak nyangka kamu bakal jadi bagian penting dalam hidup Aa. 💕</div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide" style="background-image: url('img/IMG-20240718-WA0031.jpg');">
+        <p class="text">Makasih udah jadi penyemangat yang selalu ada buat Aa dan bikin Aa merasa dihargai.</p>
+    </div>
+
+    <!-- Slide 6 -->
+    <div class="slide" style="background-image: url('img/IMG-20240718-WA0039.jpg');">
+        <p class="text">Aa percaya sama kita. Semoga kita bisa terus tumbuh bareng, saling mendukung di setiap impian kita.</p>
+    </div>
+
+    <!-- Slide 7 -->
+    <div class="slide slide7" style="background-image: url('img/IMG-20240828-WA0034.jpg');">
+        <p class="text">Kamu itu lebih dari sekadar teman hidup. Kamu adalah sahabat terbaik Aa.</p>
+    </div>
+
+    <!-- Slide 8 -->
+    <div class="slide" style="background-image: url('img/IMG-20240727-WA0007.jpg');">
+        <p class="text">Aa ingin kamu tahu, kamu punya tempat yang spesial banget di hati ini.</p>
+    </div>
+
+    <!-- Slide 9 -->
+    <div class="slide slide9" style="background-image: url('img/IMG-20240825-WA0074.jpg');">
+        <p class="text">Apapun yang terjadi, Aa selalu di sini, menemani kamu dalam setiap langkah, melewati semua hal bersama.</p>
+    </div>
+
+    <!-- Slide 10 (Penutup) -->
+    <div class="slide" style="background-image: url('img/IMG-20240827-WA0043.jpg');">
+        <p class="text">Selamat ulang tahun, sayang. Kamu adalah alasan Aa merasa beruntung setiap hari. ❤️</p>
+    </div>
+</div>
+
+<!-- Tombol Next Berbentuk Love -->
+<button class="next-btn" onclick="nextSlide()">❤️</button>
+
+<!-- Audio Latar -->
+<audio id="background-music" preload="auto">
+    <source src="music/happy-birthday-220024.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const music = document.getElementById('background-music');
+
+    // Fungsi untuk menampilkan slide berdasarkan indeks
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            if (i === index) slide.classList.add('active');
+        });
+    }
+
+    // Fungsi untuk slide berikutnya
+    function nextSlide() {
+        // Pastikan musik mulai diputar ketika tombol Next diklik pertama kali
+        if (music.paused) {
+            music.play().catch(error => {
+                console.log("User gesture is required to play audio in some browsers.");
+            });
+        }
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    // Event listener untuk memulai musik jika halaman diakses di beberapa perangkat yang memerlukan interaksi pengguna
+    window.addEventListener('click', () => {
+        if (music.paused) {
+            music.play().catch(error => {
+                console.log("User gesture is required to play audio in some browsers.");
+            });
+        }
+    });
+</script>
+
+</body>
+</html>
